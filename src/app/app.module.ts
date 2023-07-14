@@ -8,11 +8,11 @@ import { RegisterComponent } from './app/components/register/register.component'
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RegisterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
