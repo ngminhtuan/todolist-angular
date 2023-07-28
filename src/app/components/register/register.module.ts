@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register.component';
-import { FocusDirective } from '../focus.directive';
+import { FocusDirective } from '../../directives/focus.directive';
 
 @NgModule({
   declarations: [

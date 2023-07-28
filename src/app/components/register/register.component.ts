@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { DragDropModule } from '@angular/cdk/drag-drop'
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -8,23 +9,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 
 export class RegisterComponent {
-  // @ViewChildren('inputField') inputFields!: QueryList<ElementRef>;
-  constructor() { }
-  // ngAfterViewInit(): void {
-  //   this.inputFields.forEach(input => {
-  //     input.nativeElement.addEventListener("focus", () => {
-  //       input.nativeElement.classList.add("active");
-  //     });
-  //     input.nativeElement.addEventListener("blur", () => {
-  //       if (input.nativeElement.value != "") return;
-  //       input.nativeElement.classList.remove("active");
-  //     });
-  //   });
-  // }
+  constructor(private apiService: ApiService) { }
+
+  getTasksFromApi(): void {
+    this.apiService.getTasks().subscribe(data => {
+      console.log(data);
+      
+    })
+  }
 
   ngOnInit(): void {
-    const toggle_btn = document.querySelectorAll(".toggle");
-    const main = document.querySelector("main");
+    this.getTasksFromApi()
     const images = document.querySelectorAll(".image");
     const bullets = document.querySelectorAll(".bullets span");
 
@@ -42,11 +37,8 @@ export class RegisterComponent {
     bullets.forEach((bullet) => {
       bullet.addEventListener("click", moveSlider);
     });
-    toggle_btn.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        main?.classList.toggle("sign-up-mode");
-      });
-    });
+
+
 
   }
 
